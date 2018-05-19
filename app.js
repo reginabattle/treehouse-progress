@@ -40,8 +40,14 @@ function getProfile(username) {
 
 	});
 };
+
 //getProfile("reginabattle");
 
 // Get info for multiple users
-const users = ["reginabattle", "chalkers"];
+//const users = ["reginabattle", "chalkers"];
+
+// Command line arguments
+//console.log(process.argv);
+const users = process.argv.slice(2);
+
 users.forEach(getProfile);
