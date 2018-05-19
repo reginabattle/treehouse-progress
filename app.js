@@ -2,6 +2,7 @@
 // Connect to Treehouse's API to get a user's badge count and JavaScript points.
 
 const https = require('https');
+const http = require('http');
 
 // Print error messages
 function printError(error){
@@ -21,29 +22,35 @@ function getProfile(username) {
 		const request = https.get(`https://teamtreehouse.com/${username}.json`, response => {
 
 			// Get status
-			let status = response.statusCode;
-			console.log(status);
+			const status = response.statusCode;
 
-			// Get data
-			let body = "";
-			response.on('data', data =>{
-				body += data.toString();
-				//console.log(body); Print out JSON file
-			});
+			if(status === 200) {
+				// Get data
+				let body = "";
+				response.on('data', data =>{
+					body += data.toString();
+					//console.log(body); Print out JSON file
+				});
 
-			// Convert string (data) to an object
-			response.on('end', () =>{
-				try {
-					const profile = JSON.parse(body);
-					//console.log(profile); Print out parsed JSON file
+				// Convert string (data) to an object
+				response.on('end', () =>{
+					try {
+						const profile = JSON.parse(body);
+						//console.log(profile); Print out parsed JSON file
 
-					// Print out the data
-					print(profile.name, profile.badges.length, profile.points['JavaScript']);
+						// Print out the data
+						print(profile.name, profile.badges.length, profile.points['JavaScript']);
 
-				} catch(error) {
-					printError(error);
-				}
-			});
+					} catch(error) {
+						printError(error);
+					}
+				});
+
+			} else {
+				const message = `There was a problem  getting ${username}'s profile (${http.STATUS_CODES[response.statusCode]}).`;
+				const statusCodeError = new Error(message);
+				printError(statusCodeError);
+			}
 		});
 
 		request.on('error', printError);
