@@ -44,6 +44,4 @@ function getProfile(username) {
 
 // Get info for multiple users
 const users = ["reginabattle", "chalkers"];
-users.forEach(username => {
-	getProfile(username);
-});
+users.forEach(getProfile);
