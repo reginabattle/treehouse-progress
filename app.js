@@ -1,6 +1,5 @@
 
-// Problem: Show user's badge count and JavaScript points.
-// Solution: Use Node.js to connect to Treehouse's API to get profile info.
+// Connect to Treehouse's API to get a user's badge count and JavaScript points.
 
 const https = require('https');
 
@@ -19,7 +18,7 @@ function getProfile(username) {
 		// Get status
 		let status = response.statusCode;
 		if(status == 200) {
-			status = "Looking good...";
+			status = "Loading...";
 		}
 		console.log(status);
 
@@ -41,4 +40,10 @@ function getProfile(username) {
 
 	});
 };
-getProfile("reginabattle");
+//getProfile("reginabattle");
+
+// Get info for multiple users
+const users = ["reginabattle", "chalkers"];
+users.forEach(username => {
+	getProfile(username);
+});
