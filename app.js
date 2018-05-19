@@ -5,7 +5,7 @@ const https = require('https');
 
 // Print out badge count and points
 function print(username, badgeCount, points){
-	const message = `${username} has ${badgeCount} badges and ${points} points.`;
+	const message = `${username} has ${badgeCount} badges and ${points} JavaScript points.`;
 	console.log(message);
 }
 // print(username, 234, 3265);
