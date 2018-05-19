@@ -1,2 +1,2 @@
 # Treehouse Progess
-An app to retrieve a user's  profile info using Node.js and the Treehouse API.
+A Node.js app to get a Treehouse users' profile info.
