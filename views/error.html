@@ -8,8 +8,38 @@
 	<title>Error &ndash; Treehouse Progress</title>
 	
 	<link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
-	
+
+	<main class="container">
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		  Uh oh. Something went wrong.
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		    <span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="row">
+			<header class="intro col-12">
+				<h1>Treehouse Progress</h1>
+				<p>Get a Treehouse user's badge count and JavaScript points.</p>
+			</header>
+
+			<form class="col-lg-6" action="/" method="post">
+				<div class="form-group">
+					<label for="username">Enter a username</label>
+					<input id="username" name="username" class="form-control" type="text" aria-describedby="usernameHelp">
+					<small id="usernameHelp" class="form-text text-muted">ie. reginabattle</small>
+				</div>
+				<button class="btn btn-dark" type="submit">Search</button>
+			</form>
+		</div>
+	</main>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </body>
 </html>

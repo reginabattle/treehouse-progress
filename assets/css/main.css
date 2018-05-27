@@ -1,0 +1,60 @@
+/* line 2, ../sass/_base.scss */
+body, html {
+  height: 100vh;
+}
+
+/* line 6, ../sass/_base.scss */
+body {
+  color: #121212;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* line 14, ../sass/_base.scss */
+h1, h2, h3 {
+  font-weight: 700;
+}
+
+/* Layout 
+-------------------------------*/
+/* line 20, ../sass/_base.scss */
+.container .row {
+  padding-left: 1.25em;
+  padding-right: 1.25em;
+}
+
+/* Home - Intro
+-------------------------------*/
+/* line 27, ../sass/_base.scss */
+.intro {
+  padding-top: 2em;
+  text-align: left;
+}
+/* line 31, ../sass/_base.scss */
+.intro h1 {
+  margin-bottom: 0.5em;
+}
+/* line 35, ../sass/_base.scss */
+.intro p {
+  font-size: 1.25em;
+}
+
+/* Home - Form
+-------------------------------*/
+/* line 42, ../sass/_base.scss */
+form {
+  margin: 2em 0;
+  width: 100%;
+  max-width: 22em;
+}
+
+/* line 48, ../sass/_base.scss */
+label {
+  font-size: 1.25em;
+  font-weight: 700;
+}
+
+/* Media queries - Desktop
+-------------------------------*/

@@ -1,0 +1,61 @@
+
+body, html {
+	height: 100vh;
+}
+
+body {
+	color: #121212;
+	font-family: 'Nunito', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1.4;
+}
+
+h1, h2, h3 {
+	font-weight: 700;
+}
+
+/* Layout 
+-------------------------------*/
+.container .row {
+	padding-left: 1.25em;
+	padding-right: 1.25em;
+}
+
+/* Home - Intro
+-------------------------------*/
+.intro {
+	padding-top: 2em;
+	text-align: left;
+
+	h1 {
+		margin-bottom: 0.5em;
+	}
+
+	p {
+		font-size: 1.25em;
+	}
+}
+
+/* Home - Form
+-------------------------------*/
+form {
+	margin: 2em 0;
+	width: 100%;
+	max-width: 22em;
+}
+
+label {
+	font-size: 1.25em;
+	font-weight: 700;
+}
+
+
+/* Media queries - Desktop
+-------------------------------*/
+@media screen and(min-width: 768px) {
+	
+}
+
+
+
