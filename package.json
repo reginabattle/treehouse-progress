@@ -1,0 +1,23 @@
+{
+  "name": "treehouse-progress",
+  "version": "1.0.0",
+  "description": "A Node.js app to get a Treehouse user's profile info.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node config/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reginabattle/treehouse-progress.git"
+  },
+  "keywords": [
+    "node",
+    "api",
+    "bootstrap"
+  ],
+  "author": "Regina Battle",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.1.1"
+  }
+}

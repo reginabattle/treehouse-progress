@@ -61,9 +61,3 @@ function get(username) {
 
 // Make module accessible
 module.exports.get = get;
-
-// Get info for a single user
-//getProfile("reginabattle");
-
-// Get info for multiple users
-//const users = ["reginabattle", "chalkers"];
