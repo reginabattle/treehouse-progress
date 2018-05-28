@@ -38,6 +38,7 @@ function user(request, response) {
 
 		// Error
 		studentProfile.on("error", error => {
+			response.write(`${error.message} \n`);
 			response.end(`Footer \n`);
 		});
 	}
