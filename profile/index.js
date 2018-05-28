@@ -1,10 +1,6 @@
 
-// Get profile
-const profile = require ('./profile')
-const users = process.argv.slice(2);
+const Profile = require("./profile.js");
+const studentProfile = new Profile("reginabattle");
 
-if (users.length > 0) { 
-	users.forEach(profile.get);
-} else {
-	console.log("Enter a username. i.e. 'node index.js <username>'")
-}
+studentProfile.on("end", console.dir);
+studentProfile.on("error", console.error);

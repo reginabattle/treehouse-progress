@@ -1,63 +1,49 @@
 // Connect to Treehouse's API to get a user's badge count and JavaScript points.
-
+const EventEmitter = require("events").EventEmitter;
 const https = require('https');
 const http = require('http');
-
-// Print error messages
-function printError(error){
-	console.error(error.message);
-}
-
-// Print badge count and points
-function print(username, badgeCount, points){
-	const message = `${username} has ${badgeCount} badges and ${points} JavaScript points.`;
-	console.log(message);
-}
+const util = require("util");
 
 // Get profile info
-function get(username) {
-	try {
-		// Connect to the API
-		const request = https.get(`https://teamtreehouse.com/${username}.json`, response => {
+function Profile(username) {
 
-			// Get status
-			const status = response.statusCode;
+	EventEmitter.call(this);
+  profileEmitter = this;
 
-			if(status === 200) {
-				// Get data
-				let body = "";
-				response.on('data', data =>{
-					body += data.toString();
-					//console.log(body); Print out JSON file
-				});
+	// Connect to the API
+	const request = https.get(`https://teamtreehouse.com/${username}.json`, response => {
 
-				// Convert string (data) to an object
-				response.on('end', () =>{
-					try {
-						const profile = JSON.parse(body);
-						//console.log(profile); Print out parsed JSON file
+		let body = "";
+		const status = response.statusCode;
+			
+		// Status code error
+		if (response.statusCode !== 200) {
+      request.abort();
+      profileEmitter.emit("error", new Error("There was a problem getting the profile for " + username + ". (" + http.STATUS_CODES[response.statusCode] + ")"));
+    }
 
-						// Print out the data
-						print(profile.name, profile.badges.length, profile.points['JavaScript']);
-
-					} catch(error) {
-						printError(error);
-					}
-				});
-
-			} else {
-				const message = `There was a problem  getting ${username}'s profile (${http.STATUS_CODES[response.statusCode]}).`;
-				const statusCodeError = new Error(message);
-				printError(statusCodeError);
-			}
+    // Read the data
+		response.on('data', data =>{
+			body += data
+			profileEmitter.emit("data", data);
 		});
 
-		request.on('error', printError);
+		// Parse the data
+		response.on('end', () => {
+			if(status === 200) {
+				try {
+					const profile = JSON.parse(body);
+					profileEmitter.emit("end", profile);
+				} catch(error) {
+					profileEmitter.emit("error", error);
+				}
+			}
+		}).on('error', () => {
+			profileEmitter.emit("error", error);
+		});
 
-	} catch(error) {
-		printError(error);
-	}
+	});
 };
 
-// Make module accessible
-module.exports.get = get;
+util.inherits(Profile, EventEmitter);
+module.exports = Profile;
