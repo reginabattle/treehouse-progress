@@ -1,28 +1,37 @@
 
 const Profile = require("../profile/profile.js");
 const renderer = require("./renderer.js");
+const querystring = require("querystring");
 const contentType = {'Content-Type':'text/html'};
 
 // Home Route
 function home(request, response) {
 	if(request.url === "/"){
-		response.writeHead(200, contentType);
-		renderer.view("header", {}, response);
-		renderer.view("search", {}, response);
-		renderer.view("footer", {}, response);
-		response.end();
+		if(request.method.toLowerCase() === "get") {
+			response.writeHead(200, contentType);
+			renderer.view("header", {}, response);
+			renderer.view("search", {}, response);
+			renderer.view("footer", {}, response);
+			response.end();
+		} else {
+			request.on("data", postBody => {
+				let query = querystring.parse(postBody.toString());
+				response.writeHead(303, {'Location': `/${query.username}`});
+				response.end();
+			});
+		}
 	}
 }
 
 // User Route
 function user(request, response) {
-	const username = request.url.replace("/", "");
+	let username = request.url.replace("/", "");
 	if(username.length > 0){
 		response.writeHead(200, contentType);
 		renderer.view("header", {}, response);
 
 		// Get JSON from Treehouse
-		const studentProfile = new Profile(username);
+	  let studentProfile = new Profile(username);
 		studentProfile.on("end", profileJSON => {
 
 			// Store profile info

@@ -10,7 +10,7 @@ function merge(values, content) {
 }
 
 function view(template, values, response) {
-	let file = fs.readFileSync(`../views/${template}.html`, "utf8");
+	let file = fs.readFileSync(`../views/${template}.html`, 'utf8');
 	file = merge(values, file);
 	response.write(file);
 }
