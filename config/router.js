@@ -67,6 +67,15 @@ function css(request, response) {
   response.end();
 }
 
+// JS Route
+function js(request, response) {
+  let js = fs.readFileSync('../assets/js/scripts.min.js');
+  response.writeHead(200, {'Content-Type': 'text/javascript'});
+  response.write(js);
+  response.end();
+}
+
 module.exports.home = home;
 module.exports.user = user;
 module.exports.css = css; 
+module.exports.js = js;

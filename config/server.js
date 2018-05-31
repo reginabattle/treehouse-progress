@@ -6,6 +6,8 @@ http.createServer((request, response) => {
 		router.home(request, response);
 	} else if(request.url.indexOf('.css') != -1) {
 		router.css(request, response);
+	} else if(request.url.indexOf('.js') != -1) {
+		router.js(request, response); 
 	} else {
 		router.user(request, response);
 	}
