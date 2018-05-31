@@ -14,7 +14,7 @@ function Profile(username) {
 	const request = https.get(`https://teamtreehouse.com/${username}.json`, response => {
 
 		let body = "";
-		const status = response.statusCode;
+		let status = response.statusCode;
 			
 		// Status code error
 		if (response.statusCode !== 200) {
@@ -32,7 +32,7 @@ function Profile(username) {
 		response.on('end', () => {
 			if(status === 200) {
 				try {
-					const profile = JSON.parse(body);
+					let profile = JSON.parse(body);
 					profileEmitter.emit("end", profile);
 				} catch(error) {
 					profileEmitter.emit("error", error);
