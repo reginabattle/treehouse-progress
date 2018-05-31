@@ -1,6 +1,6 @@
-
 const Profile = require("../profile/profile.js");
 const renderer = require("./renderer.js");
+const fs = require("fs");
 const querystring = require("querystring");
 const contentType = {'Content-Type':'text/html'};
 
@@ -59,5 +59,14 @@ function user(request, response) {
 	}
 }
 
+// CSS Route
+function css(request, response) {
+  let css = fs.readFileSync('../assets/css/main.css');
+  response.writeHead(200, {'Content-Type': 'text/css'});
+  response.write(css);
+  response.end();
+}
+
 module.exports.home = home;
-module.exports.user = user; 
+module.exports.user = user;
+module.exports.css = css; 

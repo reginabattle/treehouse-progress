@@ -1,10 +1,15 @@
 const router = require("./router");
-
-// Create web server
 const http = require('http');
+
 http.createServer((request, response) => {
-	router.home(request, response);
-	router.user(request, response);
+	if(request.url === "/") {
+		router.home(request, response);
+	} else if(request.url.indexOf('.css') != -1) {
+		router.css(request, response);
+	} else {
+		router.user(request, response);
+	}
+	
 }).listen(3000, () => {
 	console.log('Server running...');
 });
