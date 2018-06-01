@@ -1,13 +1,17 @@
 
-<div class="profile">
-	<img src="{{avatar}}" alt="Avatar">
+<div class="row">
+	<div class="profile col-lg-6 mx-auto text-center">
+		<img class="profile-image" src="{{avatar}}" alt="Avatar">
 
-	<h2>{{name}}</h2>
-	<h3>{{username}}</h3>
+		<h2>{{name}}</h2>
+		<h3>{{username}}</h3>
 
-	<ul class="profile-stats">
-		<li><span>{{badges}}</span> Badges earned</li>
-		<li><span>{{javascriptPoints}}</span> JavaScript points</li>
-		<li><a href="/">Search again</a></li>
-	</ul>
+		<ul class="profile-stats">
+			<li><span>{{badges}}</span> Badges earned</li>
+			<li><span>{{htmlPoints}}</span> HTML points</li>
+			<li><span>{{cssPoints}}</span> CSS points</li>
+			<li><span>{{javascriptPoints}}</span> JavaScript points</li>
+			<li><a href="/">Search again</a></li>
+		</ul>
+	</div>
 </div>
