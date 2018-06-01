@@ -40,6 +40,8 @@ function user(request, response) {
 				name: profileJSON.name,
 				username: profileJSON.profile_name,
 				badges: profileJSON.badges.length,
+				htmlPoints: profileJSON.points['HTML'],
+				cssPoints: profileJSON.points['CSS'],
 				javascriptPoints: profileJSON.points['JavaScript']
 			}
 
